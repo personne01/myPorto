@@ -4,15 +4,17 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-body{
-    /* overflow: hidden; */
-}
+/* body{
+    overflow: hidden; 
+} */
 .container{
-    width: 100%;
-    min-height: 100vh;
+    max-height: 100vh;
     background-color: #f3f5f8;
 }
+
+
 nav{
+    position: fixed;
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -62,22 +64,71 @@ b{
     color: #3d535f;
     margin: 25px 10px;
 }
+.content{
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.content::-webkit-scrollbar{
+    width: 0;
+}
 
 .wrapper{
     display: flex;
-    width: 100%;
-    height: calc(100% - 80px);
+    width: 100vw;
+    height: calc(100vh - 80px);
     justify-content: center;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 10vw;
     overflow: hidden;
+}
+
+@media (max-width:900px){
+    .wrapper{
+        flex-direction: column;
+        padding: none;
+        text-align: left;
+        align-items: flex-start;
+        font-size: large;
+        width: 100vw;
+        height: 100vh;
+    }
+    .cols0{
+        height: 100vh;
+    }
+    .cols1{
+        display: none;
+    }
+    .cols h1{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .wrapper h1{
+        font-size: 50px;
+    }
+    .cols img{
+        display: none;
+    }
+    .wrapper .cols{
+        width: 100%;
+    }
+    .btns{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-between;
+    }
+    .wrapper{
+        margin-top: 100px;
+    }
 }
 
 .wrapper::before{
     position: absolute;
     content: '';
-    height: 600px;
-    width: 600px;
+    height: 50vh;
+    width: 45vw;
     border-radius: 50%;
     left: -12%;
     top: 30%;
@@ -136,7 +187,7 @@ b{
 
 h1{
     display: block;
-    font-size: 7em;
+    font-size: 4em;
     font-weight: 900;
     color: #3d535f;
 }
@@ -144,6 +195,7 @@ h1{
 .multiText{
     color: #7f00ff;
     text-transform: capitalize;
+    font-size: 0.8em;
 }
 p{
     display: block;
@@ -153,7 +205,6 @@ p{
 }
 .btns{
     width: 100%;
-    position: relative;
     left: 150px;
 }
 
@@ -173,6 +224,8 @@ button{
 }
 button:hover{
     background-color: #7f00ff;
+    box-shadow: none;
+    transform: translateY(10px);
 }
 
 .imgbox{
@@ -184,17 +237,8 @@ button:hover{
     position: relative;
     height: 100%;
     width: calc(130% - 80px);
-    top: -100px;
     right: 50px;
-    /* transform: rotateY(180deg); */
-    animation: animateUser 4s linear infinite;
-}
-
-@keyframes animateUser{
-    50%{
-        right: 30px;
-        top: -90px;
-    }
+    transform: rotateY(180deg);
 }
 .imgbox #splash{
     position: absolute;
